@@ -5,10 +5,9 @@ function [n] = basel(eps)
 	n = 1
     s = 1/n^2
     limit = (%pi^2)/6
-	while abs(limit-s) > eps
+    while abs(limit-s) > eps
         n = n + 1
         s = s +1/n^2
     end
-    
 endfunction
 
