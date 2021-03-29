@@ -37,7 +37,6 @@ disp("Exercício 2 - Item A")
     
     L=tril(A,-1);D=diag(diag(A));U=triu(A,1);
     R = L+D
-    S = -U
     MG = -inv(R)*U
     disp("||MG||_inf = ",norm(MG,%inf))
     x1 = R\(-U*x0+b)
@@ -51,7 +50,6 @@ disp("Exercício 2 - Item B")
     
     L=tril(A,-1);D=diag(diag(A));U=triu(A,1);
     R = L+D
-    S = -U
     MG = -inv(R)*U
     disp("||MG||_inf = ",norm(MG,%inf))
     x1 = R\(-U*x0+b)
