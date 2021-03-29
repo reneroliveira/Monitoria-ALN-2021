@@ -39,6 +39,8 @@ disp("Exercício 2 - Item A")
     R = L+D
     MG = -inv(R)*U
     disp("||MG||_inf = ",norm(MG,%inf))
+   
+    //Usei o comando \ pra resolver o sistema somente pra ilustrar, você deve implementar sua própria função que resolve sistemas triangulares na Aula Prática 2
     x1 = R\(-U*x0+b)
     x2 = R\(-U*x1+b)
     disp(x2)
