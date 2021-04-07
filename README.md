@@ -20,7 +20,10 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
 - [Resolução do teste 1 de 2019](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/notas/Notas%202021-03-15.pdf)
 - Formas quadráticas, normas e condicionamento
 
-## 23/03/2021 - Métodos Iterativos:
+## 23/03/2021 - Métodos Iterativos
 - [Resolução manual de exercícios da lista 2:](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/listas/Lista%202%20-%20M%C3%A9todos%20Iterativos.pdf) 1, 2, 3, 4
 - Resolução das Questões 5 e 6 da A1 2019 (no final do pdf do link anterior)
 - Resolução dos exercícios 1, 2 e 3 via Scilab: [lista2.sci](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/lista2.sci)
+
+## 07/04/2021 - Revisão A1
+- [Resolução das Questões de 1 a 4 da A1 2019](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/notas/Notas%202021-04-07.pdf)
