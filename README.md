@@ -31,5 +31,5 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
 ## 19/04/2021 - Métodos Interativos Autovalores e Autovetores
 - [Notas de Monitoria - Resumo dos Métodos](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/notas/Notas%202021-04-19.pdf)
 - [Demonstração - Matrizes simétricas possuem apenas autovalores reais](http://pi.math.cornell.edu/%7Ejerison/math2940/real-eigenvalues.pdf)
-- [Método da Potência no Scilab](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/exercicio19.sci)(Exercício 19, Cap 4.5 Poole)
+- [Método da Potência no Scilab](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/exercicio19.sci) (Exercício 19, Cap 4.5 Poole)
 - **Dica:** A'A é sempre simétrica, você pode usar essa propriedade para gerar matrizes simétricas aleatórias na Aula Prática 3.
