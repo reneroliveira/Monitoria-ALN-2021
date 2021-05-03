@@ -33,3 +33,8 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
 - [Demonstração - Matrizes simétricas possuem apenas autovalores reais](http://pi.math.cornell.edu/%7Ejerison/math2940/real-eigenvalues.pdf)
 - [Método da Potência no Scilab](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/exercicio19.sci) (Exercício 19, Cap 4.5 Poole)
 - **Dica:** A'A é sempre simétrica, você pode usar essa propriedade para gerar matrizes simétricas aleatórias na Aula Prática 3.
+
+## 03/05/2021 - Aproximação por Mínimos Quadrados
+- [Notas de Monitoria - Resumo + Exercício do Teste 2 de 2019](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/notas/Notas%202021-05-03.pdf)
+- [Exemplo Scilab com dados simulados](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/minimos_quadrados_exemplo.sci)
+- [Exemplo Scilab com dados reais (diabetes)](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/minimos_quadrados_diabetes.sci)
