@@ -41,8 +41,8 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
 
 ## 17/05/2021 - Revisão Teste 2
 - **Exercícios Sugeridos para estudo:**
-- Aula prática 4 (1-3) 
-- Cap 7.3 (Mínimos quadrados): 1,12,16,20,21,27 | 44,53,54,55,56,57,58
+  - Aula prática 4 (1-3) 
+  - Cap 7.3 (Mínimos quadrados): 1,12,16,20,21,27 | 44,53,54,55,56,57,58
 - Cap 5.3 (Fatoração QR): 2,4,9,15 | 19,20,23
 - Poole 4ed pág 396-398 - Seção de Investigação com dedução dos resultados de Householder e alguns exercícios
 - **Tópicos abordados na monitoria:**
