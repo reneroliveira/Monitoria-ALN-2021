@@ -38,3 +38,9 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
 - [Notas de Monitoria - Resumo + Exercício do Teste 2 de 2019](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/notas/Notas%202021-05-03.pdf)
 - [Exemplo Scilab com dados simulados](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/minimos_quadrados_exemplo.sci)
 - [Exemplo Scilab com dados reais (diabetes)](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/c%C3%B3digos/minimos_quadrados_diabetes.sci)
+
+## 17/05/2021
+- Exercícios Sugeridos: 
+- Aula prática 4 (1-3) 
+- Cap 7.3: 1,12,16,20,21,27 | 44,53,54,55,56,57,58
+- Cap 5.3: 2,4,9,15 | 19,20,23
