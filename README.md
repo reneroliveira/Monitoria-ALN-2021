@@ -50,3 +50,6 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
   - Aplicação da fatoração QR em Mínimos Quadrados
   - Pseudoinversa e propriedades (Poole 4ed pág 585-586)
   - Comentários sobre exercícios de demonstrações do cap 7.3
+
+## 24/05/2021 - Resolução Teste 2
+- [Pdf da resolução](emap.fgv.br)
