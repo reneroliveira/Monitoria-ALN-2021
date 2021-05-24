@@ -52,4 +52,4 @@ Notas de monitorias, soluções de exercícios, e códigos utilizados para as mo
   - Comentários sobre exercícios de demonstrações do cap 7.3
 
 ## 24/05/2021 - Resolução Teste 2
-- [Pdf da resolução](emap.fgv.br)
+- [Pdf da resolução](https://github.com/reneroliveira/Monitoria-ALN-2021/blob/main/notas/Notas%202021-05-24%20Teste2%202021.pdf)
