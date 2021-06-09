@@ -1,0 +1,284 @@
+\documentclass[12pt]{article}
+
+\usepackage{setspace}
+\usepackage{amsmath,amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[pdftex,bookmarks=true,bookmarksopen=false,bookmarksnumbered=true,colorlinks=true,linkcolor=black]{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{pdfpages}
+\usepackage{tocbibind}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[document]{ragged2e}
+\usepackage[shortlabels]{enumitem}
+\setlength{\parindent}{0em}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{multirow}
+
+\newcommand\MyBox[2]{
+	\fbox{\lower0.375cm
+		\vbox to 0.85cm{\vfil
+			\hbox to 0.85cm{\hfil\parbox{0.7cm}{#1\\#2}\hfil}
+			\vfil}%
+	}%
+}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+\renewcommand{\lstlistingname}{Algoritmo}
+\usepackage[brazil]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\small23/05/2021\\FGV EMAp}        
+\chead{\textbf{\Large Teste 2 \\ Álgebra Linear Numérica}}
+\rhead{\small{Rener Oliveira}}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+\title{Um aluno copiou erradamente a definição de limite}
+\begin{document}
+	\subsubsection*{Questão 1}
+		\begin{enumerate}[a)]
+			\item Fazendo $A=\begin{bmatrix}1&-3\cr 1&-2\cr 1&-1\cr 1&0\cr 1&1\cr 1&2\cr 1&3\cr \end{bmatrix}$ e $y=\begin{bmatrix}1\cr 1.2\cr 2.1\cr 1.5\cr 2.1\cr 2.5\cr 2\cr \end{bmatrix}$ queremos encontrar $\alpha = \begin{bmatrix}a\\b\end{bmatrix}$ tal que $A\alpha$ seja a melhor aproximação de $y$ no espaço coluna de $A$. Tal vetor de coeficientes pode ser encontrado via resolução do sistema linear $A^TA\alpha = A^Ty$.
+			
+			Usando o Scilab, obtemos $a\approx 1.771$ e $b= 0.2$.
+			
+			\begin{lstlisting}
+	--> x = [-3;-2;-1;0;1;2;3];
+	--> A = [ones(7,1) x];
+	--> y = [1;1.2;2.1;1.5;2.1;2.5;2];
+	--> alpha = Gaussian_Elimination_4(A'*A,A'*y)
+	alpha  = 
+	1.7714286
+	0.2 
+			\end{lstlisting}
+		
+		\item Com o modelo $y(x) = a+bx$ do item anterior, realizando os cálculos no Scilab obtemos:
+		\begin{align*}
+			y(4) &= a+4b \approx 2.571\\
+			y(10) & = a+10b \approx 3.771
+		\end{align*}
+		
+		\item No item (a) para a aproximação por função afim, usamos uma matriz com uma coluna de \textit{uns} e outra coluna com os elementos $x$ da tabela. Para o modelo quadrático deste exercício, adicionaremos uma coluna $x^2$ para aproximar uma parábola. Dessa forma temos uma matriz modificada:
+	
+	$$A_2=\begin{bmatrix}1&-3&9\cr 1&-2&4\cr 1&-1&1\cr 1&0&0\cr 1&1&1\cr 1&2&4\cr 1&3&9\cr \end{bmatrix}$$
+	
+	e mantemos $y$ como mesmo vetor do item (a). 
+	
+	Agora o que estamos buscando é um vetor $\alpha_2=\begin{bmatrix}
+		a\\b\\c
+	\end{bmatrix}$, pois a multiplicação $A_2\alpha_2$ estará representando $a+bx+cx^2$ com $x$ vetor coluna dos dados da tabela.
+	
+	Agora os três coeficientes serão encontrados pela solução do sistema $A_2^TA_2\alpha_2=A_2^Ty$. Pelo Scilab encontra-se:
+	\begin{align*}
+		a&\approx1.943\\
+		b&=0.2\\
+		c&\approx-0.043
+	\end{align*}
+	\begin{lstlisting}
+	--> A2 = [ones(7,1) x x^2];
+	--> alpha2 = Gaussian_Elimination_4(A2'*A2,A2'*y)
+	alpha2  = 
+	1.9428571
+	0.2      
+	-0.0428571
+	\end{lstlisting}
+
+	\item Usando os coeficientes encontrados na função $y(x)=a+bx+cx^2$, e o Scilab para realização dos cálculos,temos:
+	
+	\begin{align*}
+		y(4) &= a+4b+16c \approx 2.057\\
+		y(10) & = a+10b+100c \approx -0.343
+	\end{align*}
+	
+	\begin{lstlisting}
+		--> a=alpha2(1);b=alpha2(2);c=alpha2(3);
+		--> a+4*b+16*c
+		ans  =
+		2.0571429
+		
+		--> a+10*b+100*c
+		ans  =
+		-0.3428571
+	\end{lstlisting}
+
+	\item Para determinar qual modelo melhor se ajustou aos dados vamos calcular o erro quadrático de cada um deles. O erro do modelo linear do item (a) será $e_1=||y-A\alpha||$ e do modelo quadrático do item (c) será $e_2=||y-A_2\alpha_2||$. Utilizando o Scilab para os cálculos, encontramos:
+	\begin{align*}
+		e_1&\approx 0.821\\
+		e_2&\approx 0.721
+	\end{align*}
+	Veja que $e_2<e_1$, portanto, o modelo quadrático se ajustou melhor aos dados.
+	\begin{lstlisting}
+		--> e1 = norm(y-A*alpha)
+		e1  = 
+		0.8211490
+		
+		--> e2 = norm(y-A2*alpha2)
+		e2  = 
+		0.7211103
+	\end{lstlisting}
+\end{enumerate}
+
+	\subsubsection*{Questão 2}
+	\begin{enumerate}[a)]
+		\item Tendo a fatoração $QR$ da matriz $A$, se $R$ é invertível a solução por mínimos quadrados do sistema $Ax=b$ é dada por $x=R^{-1}Q^Tb$. Para demonstrar tal fato, sabemos que tal solução satisfaz $A^TAx=A^Tb$. Substituindo $A$ por $QR$ e usando $Q^{-1}=Q^T$ mais o fato de $R$ invertível $\Rightarrow R^T$ invertível, temos:
+		\begin{align}
+			A^TAx=A^Tb&\Rightarrow (QR)^T(QR)x=(QR)^Tb\nonumber\\
+			&\Rightarrow R^TQ^TQRx=R^TQ^Tb\nonumber\\
+			&\Rightarrow R^T(Q^{-1}Q)Rx=R^TQ^Tb\nonumber\\
+			&\Rightarrow R^TIRx=R^TQ^Tb\nonumber\\
+			&\Rightarrow Rx=Q^Tb\label{sys}\\
+			&\Rightarrow x=R^{-1}Q^Tb\label{inv}
+		\end{align}
+	
+	Computacionalmente ou mesmo para cálculos manuais, pode ser preferível encontrar $x$ resolvendo o sistema linear (\ref{sys}) de inverter $R$ e usar (\ref{inv}).
+	Sendo $b=\begin{bmatrix}
+		b_1\\b_2\\b_3
+	\end{bmatrix}$ o vetor de respostas obtido através do número da matrícula. A solução procurada é obtida resolvendo o sistema linear em (\ref{sys}), que no caso será:
+\[Rx=Q^Tb\]
+\[\begin{bmatrix}5&0.4\cr 0&2.417\cr \end{bmatrix}x=\begin{bmatrix}-0.8&0.6&0\cr 0.546&0.728&-0.414\cr \end{bmatrix}\begin{bmatrix}
+	b_1\\b_2\\b_3
+\end{bmatrix}\]
+
+A solução a partir daqui é individual, mas pode ser resolvida via \lstinline|Gaussian_Elimination_4(R,Q'*b)| após definir $R,Q$ e $b$ no console, ou substituindo $b$ no sistema acima e prosseguir os cálculos manualmente.
+
+\item Seja $x=\begin{bmatrix}
+	-4\\3\\0
+\end{bmatrix}$ a primeira coluna de $B$, vamos transformá-la em $\pm\begin{bmatrix}
+||x||\\0\\0
+\end{bmatrix}$ via transformação ortogonal $H_1$ à ser descoberta pelo Método de Householder.
+
+Utilizaremos o Refletor de Householder $H_1=I-2uu^T$ com $u=\dfrac{x-H_1x}{||x-H_1x||}$.
+Como $||x||=\sqrt{4^2+3^2+0^2}=\sqrt{16+9}=\sqrt{25}=5$, podemos escolher $H_1x$ como $[5~0~0]^T$ ou $[-5~0~0]^T$; Apesar de ambos darem fatorações QR válidas no final, vamos escolher $H_1x$ tal que $||x-H_1x||$ seja máximo. No caso, é fácil ver que tal $H_1x$ será $[5~0~0]^T$ nesse critério, bastando olhar para a primeira coordenada de $x$ e ver que subtraindo com 5 teremos -9 que é maior em módulo do que -4-(-5)=1.
+
+Encontrando o vetor $u$:
+\begin{align*}u&=\dfrac{x-H_1x}{||x-H_1x||}
+	=\dfrac{[-9~3~0]^T}{||[-9~3~0]^T||}\\
+	&=\dfrac{[-9~3~0]^T}{\sqrt{9^2+3^2}}=\dfrac{[-9~3~0]^T}{\sqrt{90}}=\\
+	&=\frac{1}{3\sqrt{10}}[-9~3~0]^T\\
+	&=\frac1{\sqrt{10}}\begin{bmatrix}
+		-3\\1\\0
+	\end{bmatrix}
+\end{align*}
+Encontrando a matriz $H_1$:
+\begin{align*}
+	H_1&=I-2uu^T\\
+	&=I-2\cdot\frac1{\sqrt{10}}\cdot\frac1{\sqrt{10}}\begin{bmatrix}
+		-3\\1\\0\end{bmatrix}\begin{bmatrix}
+		-3&1& 0\end{bmatrix}\\
+	&=I-\frac15\begin{bmatrix}
+		9&-3&0\\
+		-3&1&0\\
+		0&0&0
+	\end{bmatrix}\\
+&=\frac15\begin{bmatrix}
+	5&0&0\\0&5&0\\0&0&5
+\end{bmatrix}-\frac15\begin{bmatrix}
+9&-3&0\\
+-3&1&0\\
+0&0&0
+\end{bmatrix}\\
+&=\frac15\begin{bmatrix}
+	-4&3&0\\3&4&0\\0&0&5
+\end{bmatrix}
+\end{align*}
+Para encontrar $R_1$ multiplicamos $H_1$ por $B$.
+
+\begin{align*}
+	R_1&=H_1B\\
+	&=\frac15\begin{bmatrix}
+		-4&3&0\\3&4&0\\0&0&5
+	\end{bmatrix}\begin{bmatrix}-4&2\cr 3&2\cr 0&-1\cr \end{bmatrix}\\
+&=\frac15\begin{bmatrix}
+	4^2+3^2 &-4\cdot2+3\cdot2\\
+	-3\cdot4+4\cdot3 & 3\cdot2+4\cdot2\\
+	5\cdot0&-5
+\end{bmatrix}\\
+&=\frac15\begin{bmatrix}
+	25&-2\\
+	0&14\\
+	0&-5
+\end{bmatrix}=\begin{bmatrix}
+5&-2/5\\
+0&14/5\\
+0&-1
+\end{bmatrix}
+\end{align*}
+
+Consolidando a resposta, temos $H_1=\dfrac15\begin{bmatrix}
+	-4&3&0\\3&4&0\\0&0&5
+\end{bmatrix}$ e $R_1=\begin{bmatrix}
+5&-2/5\\
+0&14/5\\
+0&-1
+\end{bmatrix}$.
+	\end{enumerate}
+
+\subsubsection*{Questão 3}
+
+Tome a fórmula $x=\dfrac{30-\sqrt{896}}{2}$ e multiplique espertamente por $\dfrac{30+\sqrt{896}}{30+\sqrt{896}}$, assim, teremos:
+\begin{align*}
+	x&=\dfrac{(30-\sqrt{896})(30+\sqrt{896})}{2(30+\sqrt{896})}\\
+	&=\dfrac{30^2-896}{60+2\sqrt{896}}\\
+	&=\dfrac{900-896}{30+2\sqrt{896}}=\dfrac{4}{60+2\sqrt{896}}\\
+	&=\dfrac{2}{30+\sqrt{896}}
+\end{align*}
+
+Utilizando $29.9$ como aproximação da raiz nessa nova fórmula, temos $x=\dfrac{2}{30+29.9}=\dfrac{2}{59.9}\approx 0.0333890$
+
+O erro relativo à aproximação do enunciado que usa encontra $x\approx0.0333705$ será:
+
+\[\dfrac{0.0333890-0.0333705}{0.0333705}\approx0.0005544\] 
+
+ou ainda, $0.05544\%$ que é bem menor que $49\%$.
+
+Uma nova proposta de algoritmo de aproximação é usar então a fórmula alternativa $\dfrac{2}{30+\sqrt{896}}$.
+
+Porque tivemos tamanha redução? Seja $r=\sqrt{896}$ a raiz exata e $\Delta r$ uma perturbação de forma que $r+\Delta r$ seja uma aproximação da raiz de $896$. Usando $x=\dfrac{30-\sqrt{896}}{2}$, o erro relativo será:
+
+\begin{align*}
+	\dfrac{|(30-r-\Delta r)/2-(30-r)/2|}{(30-r)/2}&=\dfrac{|30-r-\Delta r-30+r|}{30-r}\\
+	&=\dfrac{|-\Delta r|}{30-r}\\
+	&=\dfrac{|\Delta r|}{30-r}
+\end{align*}
+
+Como 30 é numericamente muito próximo de $r$ (na ordem de 0.066741) é necessário uma perturbação $\Delta r$ bem menor, para que o erro relativo seja pequeno. O mal condicionamento numérico se dá por essa proximidade de $30$ e $r$ no denominador do erro, o que produz erros grandes se o numerador não for pequeno suficiente. A aproximação de 29.9 por exemplo, não e uma aproximação ruim, mas equivale à um $\Delta r$ da ordem de 0.033 que corresponde aos 49\% vistos no enunciado.
+
+A modificação proposta $x=\dfrac{2}{30+\sqrt{896}}$, aceita perturbações $\Delta r$ mais grosseiras do que a fórmula anterior, como vemos no cálculo a seguir:
+\begin{align*}
+&~~\dfrac{|2/(30+r+\Delta r)-2/(30+r)|}{2/(30+r)}\\
+	&=\dfrac{|1/(30+r+\Delta r)-1/(30+r)|}{1/(30+r)}\\
+	&=\left|\dfrac{30+r}{30+r+\Delta r}-1\right|\\
+	&=\left|\dfrac{30+r-30-r-\Delta r}{30+r+\Delta r}\right|\\
+	&=\dfrac{|\Delta r|}{30+r+\Delta r}
+\end{align*}
+Esta última expressão mostra que a nova fórmula é muito mais estável numericamente, pois o denominador é grande suficiente (na ordem de 60) para aceitar perturbações bem grosseiras sobre $r$ e ainda assim manter o erro relativo pequeno. Apenas como exemplo se aproximarmos $\sqrt{896}$ por $28$, com $\Delta r \approx 1.9332591$ teremos um erro relativo de $0.0312489$ ou aproximadamente $3.1\%$. Achou muito? Usando tal $\Delta r$ com o primeiro método chega-se a um erro da ordem de $28.966630$ ou ainda $2896.63\%$ !!!
+\end{document}
